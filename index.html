@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda tu cita de uñas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fce4ec;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #c2185b;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      margin: auto;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #880e4f;
+      text-align: left;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+    button {
+      background: #c2185b;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ad1457;
+    }
+  </style>
+</head>
+<body>
+  <h1>Agenda tu Cita de Uñas</h1>
+  <form id="citaForm">
+    <label for="nombre">Tu nombre:</label>
+    <input type="text" id="nombre" placeholder="Ej. Ana" required>
+
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" required>
+
+    <label for="hora">Hora:</label>
+    <select id="hora" required>
+      <option value="">Selecciona una hora</option>
+      <option>10:00 AM</option>
+      <option>11:00 AM</option>
+      <option>12:00 PM</option>
+      <option>2:00 PM</option>
+      <option>3:00 PM</option>
+      <option>4:00 PM</option>
+      <option>5:00 PM</option>
+    </select>
+
+    <button type="submit">Confirmar por WhatsApp y Calendar</button>
+  </form>
+
+  <script>
+    // Establece el mínimo en el calendario desde mañana
+    const fechaInput = document.getElementById("fecha");
+    const mañana = new Date();
+    mañana.setDate(mañana.getDate() + 1);
+    fechaInput.min = mañana.toISOString().split("T")[0];
+
+    // Manejo del formulario
+    document.getElementById("citaForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const fecha = document.getElementById("fecha").value;
+      const horaTexto = document.getElementById("hora").value;
+
+      if (!nombre || !fecha || !horaTexto) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      const hoy = new Date();
+      const fechaSeleccionada = new Date(fecha);
+      hoy.setHours(0, 0, 0, 0);
+      if (fechaSeleccionada <= hoy) {
+        alert("Por favor elige una fecha futura.");
+        return;
+      }
+
+      const telefono = "5215512345678"; // Reemplaza con tu número
+      const mensaje = `Hola, soy ${nombre}. Quiero agendar una cita para arreglarme las uñas el día ${fecha} a las ${horaTexto}. ¡Gracias! 💅`;
+      const urlWhatsApp = `https://wa.me/554896796813?text=${encodeURIComponent(mensaje)}`;
+      window.open(urlWhatsApp, "_blank");
+
+      // Convertir hora a formato 24h
+      function convertirAHora24(horaStr) {
+        const [time, meridiem] = horaStr.split(" ");
+        let [horas, minutos] = time.split(":").map(Number);
+        if (meridiem === "PM" && horas !== 12) horas += 12;
+        if (meridiem === "AM" && horas === 12) horas = 0;
+        return { horas, minutos };
+      }
+
+      const { horas, minutos } = convertirAHora24(horaTexto);
+      const inicio = new Date(fecha);
+      inicio.setHours(horas, minutos);
+
+      const fin = new Date(inicio);
+      fin.setMinutes(fin.getMinutes() + 45); // Duración estimada de la cita
+
+      function formatoGoogleCalendar(fecha) {
+        return fecha.toISOString().replace(/[-:]|\.\d{3}/g, "").slice(0, 15) + "Z";
+      }
+
+      const calendarURL = `https://calendar.google.com/calendar/render?action=TEMPLATE` +
+        `&text=Cita de uñas con ${encodeURIComponent(nombre)}` +
+        `&dates=${formatoGoogleCalendar(inicio)}/${formatoGoogleCalendar(fin)}` +
+        `&details=Cita reservada por WhatsApp%0A${encodeURIComponent(mensaje)}` +
+        `&location=Salón de uñas` +
+        `&sf=true&output=xml`;
+
+      window.open(calendarURL, "_blank");
+    });
+  </script>
+</body>
+</html>
