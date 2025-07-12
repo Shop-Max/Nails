@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nails Jenny - Belleza en tus manos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b98;
+            --secondary: #ffb6c1;
+            --dark: #3a3a3a;
+            --light: #fff5f7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .slogan {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            margin: 0.5rem auto;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-info {
+            padding: 1.5rem;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: var(--dark);
+        }
+        
+        .service-desc {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .appointment-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text {
+            flex: 1;
+        }
+        
+        .contact-text h3 {
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-links a {
+            flex: 1;
+            text-align: center;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Nails Jenny</div>
+        <div class="slogan">Belleza y cuidado profesional para tus uñas</div>
+    </header>
+    
+    <div class="container">
+        <section id="services">
+            <h2>Nuestros Servicios</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596704017256-9a8a8b3f1325?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-info">
+                        <h3 class="service-title">Manicure Básico</h3>
+                        <div class="service-price">$150</div>
+                        <p class="service-desc">Corte, limado, cutículas, hidratación y esmalte tradicional.</p>
+                        <a href="#appointment" class="btn">Agendar cita</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-info">
+                        <h3 class="service-title">Pedicure Spa</h3>
+                        <div class="service-price">$250</div>
+                        <p class="service-desc">Pedicure con exfoliación, mascarilla y masaje relajante.</p>
+                        <a href="#appointment" class="btn">Agendar cita</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1597248881519-d726bf40cdd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-info">
+                        <h3 class="service-title">Uñas Acrílicas</h3>
+                        <div class="service-price">$400</div>
+                        <p class="service-desc">Extensiones acrílicas con esculpido y diseño a tu elección.</p>
+                        <a href="#appointment" class="btn">Agendar cita</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604658243844-00a72a0d0b6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-info">
+                        <h3 class="service-title">Gelish</h3>
+                        <div class="service-price">$300</div>
+                        <p class="service-desc">Esmaltado semipermanente que dura hasta 3 semanas.</p>
+                        <a href="#appointment" class="btn">Agendar cita</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-info">
+                        <h3 class="service-title">Diseño Artístico</h3>
+                        <div class="service-price">Desde $200</div>
+                        <p class="service-desc">Diseños personalizados con piedras, strass y decoraciones.</p>
+                        <a href="#appointment" class="btn">Agendar cita</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-info">
+                        <h3 class="service-title">Paquete Completo</h3>
+                        <div class="service-price">$600</div>
+                        <p class="service-desc">Manicure + Pedicure Spa + Gelish. Ahorra $150.</p>
+                        <a href="#appointment" class="btn">Agendar cita</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="appointment">
+            <h2>Solicita tu Cita</h2>
+            <form class="appointment-form" id="appointmentForm">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email (opcional)</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Servicio de interés</label>
+                    <select id="service" name="service" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="Manicure Básico">Manicure Básico - $150</option>
+                        <option value="Pedicure Spa">Pedicure Spa - $250</option>
+                        <option value="Uñas Acrílicas">Uñas Acrílicas - $400</option>
+                        <option value="Gelish">Gelish - $300</option>
+                        <option value="Diseño Artístico">Diseño Artístico - Desde $200</option>
+                        <option value="Paquete Completo">Paquete Completo - $600</option>
+                        <option value="Otro">Otro (especificar en mensaje)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Fecha preferida</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time">Hora preferida</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje adicional (opcional)</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Enviar solicitud</button>
+            </form>
+        </section>
+        
+        <section id="contact">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Teléfono</h3>
+                        <p>+55 489 679 6813</p>
+                        <div class="contact-links">
+                            <a href="tel:+554896796813" class="btn">Llamar ahora</a>
+                            <a href="https://wa.me/554896796813" class="btn btn-outline">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Dirección</h3>
+                        <p>Calle Flores #123, Colonia Jardines, CDMX</p>
+                        <div class="contact-links">
+                            <a href="https://maps.google.com?q=Calle+Flores+123+Colonia+Jardines+CDMX" class="btn" target="_blank">Ver en mapa</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Horario</h3>
+                        <p>Lunes a Viernes: 10:00 - 19:00</p>
+                        <p>Sábados: 10:00 - 16:00</p>
+                        <p>Domingos: Cerrado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="logo">Nails Jenny</div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>&copy; 2025 Nails Jenny. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener los valores del formulario
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const message = document.getElementById('message').value;
+            
+            // Formatear la fecha para mostrarla mejor
+            const formattedDate = new Date(date).toLocaleDateString('es-MX', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Crear mensaje para WhatsApp
+            let whatsappMessage = `¡Hola Nails Jenny! Quiero agendar una cita:\n\n`;
+            whatsappMessage += `*Nombre:* ${name}\n`;
+            whatsappMessage += `*Teléfono:* ${phone}\n`;
+            whatsappMessage += `*Servicio:* ${service}\n`;
+            whatsappMessage += `*Fecha:* ${formattedDate}\n`;
+            whatsappMessage += `*Hora:* ${time}\n`;
+            
+            if (message) {
+                whatsappMessage += `*Mensaje adicional:* ${message}\n`;
+            }
+            
+            // Codificar el mensaje para URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Redirigir a WhatsApp
+            window.location.href = `https://wa.me/525512345678?text=${encodedMessage}`;
+        });
+        
+        // Establecer la fecha mínima como hoy
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+    </script>
+</body>
+</html>
