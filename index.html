@@ -67,10 +67,28 @@
             font-weight: bold;
             margin-bottom: 1rem;
         }
+    
+        .logo-img {
+            max-height: 120px; /* Aumenté de 80px a 120px */
+            width: auto;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease; /* Para efecto suave al pasar el mouse */
+        }
+        
+        .logo-img:hover {
+            transform: scale(2.05); /* Efecto de leve aumento al pasar el mouse */
+        }
+        
+        /* Versión móvil */
+        @media (max-width: 768px) {
+            .logo-img {
+                max-height: 80px; /* Aumenté de 60px a 80px */
+            }
+        }
         
         .slogan {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            opacity: 1.1;
         }
         
         .container {
@@ -288,7 +306,9 @@
             <button class="language-btn active" data-lang="es">ES</button>
             <button class="language-btn" data-lang="pt">PT</button>
         </div>
-        <div class="logo">Nails Jenny</div>
+        <div class="logo">
+          <img src="logo.png" alt="Nails Jenny" class="logo-img">
+        </div>
         <div class="slogan" data-i18n="slogan">Belleza y cuidado profesional para tus uñas</div>
     </header>
     
