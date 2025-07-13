@@ -31,6 +31,35 @@
             text-align: center;
             padding: 2rem 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .language-btn.active {
+            background: white;
+            color: var(--primary);
+            font-weight: bold;
         }
         
         .logo {
@@ -255,139 +284,133 @@
 </head>
 <body>
     <header>
+        <div class="language-switcher">
+            <button class="language-btn active" data-lang="es">ES</button>
+            <button class="language-btn" data-lang="pt">PT</button>
+        </div>
         <div class="logo">Nails Jenny</div>
-        <div class="slogan">Belleza y cuidado profesional para tus uñas</div>
+        <div class="slogan" data-i18n="slogan">Belleza y cuidado profesional para tus uñas</div>
     </header>
     
     <div class="container">
         <section id="services">
-            <h2>Nuestros Servicios</h2>
+            <h2 data-i18n="services_title">Nuestros Servicios</h2>
             <div class="services">
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596704017256-9a8a8b3f1325?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-image" style="background-image: url('1.jpg');"></div>
                     <div class="service-info">
-                        <h3 class="service-title">Manicure Básico</h3>
-                        <div class="service-price">$150</div>
-                        <p class="service-desc">Corte, limado, cutículas, hidratación y esmalte tradicional.</p>
-                        <a href="#appointment" class="btn">Agendar cita</a>
+                        <h3 class="service-title" data-i18n="service1_title">Manicure Esmaltación en Gel</h3>
+                        <div class="service-price">R$50</div>
+                        <p class="service-desc" data-i18n="service1_desc">Corte, limado, cutículas, hidratación y esmalte en Gel.</p>
+                        <a href="#appointment" class="btn" data-i18n="book_appointment">Agendar cita</a>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-image" style="background-image: url('2.jpg');"></div>
                     <div class="service-info">
-                        <h3 class="service-title">Pedicure Spa</h3>
-                        <div class="service-price">$250</div>
-                        <p class="service-desc">Pedicure con exfoliación, mascarilla y masaje relajante.</p>
-                        <a href="#appointment" class="btn">Agendar cita</a>
+                        <h3 class="service-title" data-i18n="service2_title">Pedicure y Esmaltación en gel</h3>
+                        <div class="service-price">R$50</div>
+                        <p class="service-desc" data-i18n="service2_desc">Pedicure con exfoliación, crema y masaje relajante.</p>
+                        <a href="#appointment" class="btn" data-i18n="book_appointment">Agendar cita</a>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1597248881519-d726bf40cdd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-image" style="background-image: url('3.jpg');"></div>
                     <div class="service-info">
-                        <h3 class="service-title">Uñas Acrílicas</h3>
-                        <div class="service-price">$400</div>
-                        <p class="service-desc">Extensiones acrílicas con esculpido y diseño a tu elección.</p>
-                        <a href="#appointment" class="btn">Agendar cita</a>
+                        <h3 class="service-title" data-i18n="service3_title">Uñas Acrílicas-poligel-fibra de vidrio</h3>
+                        <div class="service-price">R$100 - 120</div>
+                        <p class="service-desc" data-i18n="service3_desc">Extensiones con esculpido y diseño a tu elección (sencillos).</p>
+                        <a href="#appointment" class="btn" data-i18n="book_appointment">Agendar cita</a>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604658243844-00a72a0d0b6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-image" style="background-image: url('4.jpg');"></div>
                     <div class="service-info">
-                        <h3 class="service-title">Gelish</h3>
-                        <div class="service-price">$300</div>
-                        <p class="service-desc">Esmaltado semipermanente que dura hasta 3 semanas.</p>
-                        <a href="#appointment" class="btn">Agendar cita</a>
+                        <h3 class="service-title" data-i18n="service4_title">Diseño Artístico</h3>
+                        <div class="service-price">R$10 - 20</div>
+                        <p class="service-desc" data-i18n="service4_desc">Diseños personalizados con piedras, strass y decoraciones.</p>
+                        <a href="#appointment" class="btn" data-i18n="book_appointment">Agendar cita</a>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="service-image" style="background-image: url('5.jpg');"></div>
                     <div class="service-info">
-                        <h3 class="service-title">Diseño Artístico</h3>
-                        <div class="service-price">Desde $200</div>
-                        <p class="service-desc">Diseños personalizados con piedras, strass y decoraciones.</p>
-                        <a href="#appointment" class="btn">Agendar cita</a>
+                        <h3 class="service-title" data-i18n="service5_title">Paquete Completo</h3>
+                        <div class="service-price">Desde R$150</div>
+                        <p class="service-desc" data-i18n="service5_desc">Uñas a su elección (diseño, efecto, etc), los pies.</p>
+                        <a href="#appointment" class="btn" data-i18n="book_appointment">Agendar cita</a>
                     </div>
                 </div>
-                
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
-                    <div class="service-info">
-                        <h3 class="service-title">Paquete Completo</h3>
-                        <div class="service-price">$600</div>
-                        <p class="service-desc">Manicure + Pedicure Spa + Gelish. Ahorra $150.</p>
-                        <a href="#appointment" class="btn">Agendar cita</a>
-                    </div>
-                </div>
+                              
             </div>
         </section>
         
         <section id="appointment">
-            <h2>Solicita tu Cita</h2>
+            <h2 data-i18n="appointment_title">Solicita tu Cita</h2>
             <form class="appointment-form" id="appointmentForm">
                 <div class="form-group">
-                    <label for="name">Nombre completo</label>
+                    <label for="name" data-i18n="form_name">Nombre completo</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Teléfono</label>
+                    <label for="phone" data-i18n="form_phone">Teléfono</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email (opcional)</label>
+                    <label for="email" data-i18n="form_email">Email (opcional)</label>
                     <input type="email" id="email" name="email">
                 </div>
                 
                 <div class="form-group">
-                    <label for="service">Servicio de interés</label>
+                    <label for="service" data-i18n="form_service">Servicio de interés</label>
                     <select id="service" name="service" required>
-                        <option value="">Selecciona un servicio</option>
-                        <option value="Manicure Básico">Manicure Básico - $150</option>
-                        <option value="Pedicure Spa">Pedicure Spa - $250</option>
-                        <option value="Uñas Acrílicas">Uñas Acrílicas - $400</option>
-                        <option value="Gelish">Gelish - $300</option>
-                        <option value="Diseño Artístico">Diseño Artístico - Desde $200</option>
-                        <option value="Paquete Completo">Paquete Completo - $600</option>
-                        <option value="Otro">Otro (especificar en mensaje)</option>
+                        <option value="" data-i18n="select_service">Selecciona un servicio</option>
+                        <option value="Manicure Esmaltación en gel" data-i18n="service1_option">Manicure Esmaltación en Gel - R$50</option>
+                        <option value="Pedicure y Esmaltación en Gel" data-i18n="service2_option">Pedicure y Esmaltación en gel - R$50</option>
+                        <option value="Uñas Acrílicas-poligel-fibra de vidrio" data-i18n="service3_option">Uñas Acrílicas-poligel-fibra de vidrio - R$100 - 120</option>
+                        <option value="Diseño Artístico" data-i18n="service4_option">Diseño Artístico - Desde R$10 - 20</option>
+                        <option value="Paquete Completo" data-i18n="service5_option">Paquete Completo - R$150</option>
+                        <option value="Otro" data-i18n="other_service">Otro (especificar en mensaje)</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="date">Fecha preferida</label>
+                    <label for="date" data-i18n="form_date">Fecha preferida</label>
                     <input type="date" id="date" name="date" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="time">Hora preferida</label>
+                    <label for="time" data-i18n="form_time">Hora preferida</label>
                     <input type="time" id="time" name="time" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="message">Mensaje adicional (opcional)</label>
+                    <label for="message" data-i18n="form_message">Mensaje adicional (opcional)</label>
                     <textarea id="message" name="message"></textarea>
                 </div>
                 
-                <button type="submit" class="btn">Enviar solicitud</button>
+                <button type="submit" class="btn" data-i18n="form_submit">Enviar solicitud</button>
             </form>
         </section>
         
         <section id="contact">
-            <h2>Contacto</h2>
+            <h2 data-i18n="contact_title">Contacto</h2>
             <div class="contact-info">
                 <div class="contact-item">
                     <div class="contact-icon">
                         <i class="fas fa-phone-alt"></i>
                     </div>
                     <div class="contact-text">
-                        <h3>Teléfono</h3>
-                        <p>+554896796813</p>
+                        <h3 data-i18n="contact_phone">Teléfono</h3>
+                        <p>+55 48 9679 6813</p>
                         <div class="contact-links">
-                            <a href="tel:+554896796813" class="btn">Llamar ahora</a>
+                            <a href="tel:+554896796813" class="btn" data-i18n="call_now">Llamar ahora</a>
                             <a href="https://wa.me/554896796813" class="btn btn-outline">WhatsApp</a>
                         </div>
                     </div>
@@ -398,10 +421,10 @@
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div class="contact-text">
-                        <h3>Dirección</h3>
-                        <p>Calle Flores #123, Colonia Jardines, CDMX</p>
+                        <h3 data-i18n="contact_address">Dirección</h3>
+                        <p data-i18n="full_address">Servidão manoel Evaristo dos Santos 75 Vargem Grande Florianópolis</p>
                         <div class="contact-links">
-                            <a href="https://maps.google.com?q=Calle+Flores+123+Colonia+Jardines+CDMX" class="btn" target="_blank">Ver en mapa</a>
+                            <a href="https://maps.google.com?q=Servidão+manoel+Evaristo+dos+Santos+75+Vargem+Grande+Florianópolis" class="btn" target="_blank" data-i18n="view_map">Ver en mapa</a>
                         </div>
                     </div>
                 </div>
@@ -411,10 +434,8 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="contact-text">
-                        <h3>Horario</h3>
-                        <p>Lunes a Viernes: 10:00 - 19:00</p>
-                        <p>Sábados: 10:00 - 16:00</p>
-                        <p>Domingos: Cerrado</p>
+                        <h3 data-i18n="contact_hours">Horario</h3>
+                        <p data-i18n="week_hours">Lunes a Domingo: 14:00 - 19:00</p>
                     </div>
                 </div>
             </div>
@@ -424,19 +445,132 @@
     <footer>
         <div class="logo">Nails Jenny</div>
         <div class="social-links">
-            <div class="social-links">
-               <a href="#"><i class="fab fa-facebook-f"></i></a>
-               <a href="https://www.instagram.com/nails_jenny15?igsh=c3dzZnRiaXVhOTJz" target="_blank"><i class="fab fa-instagram"></i></a>
-               <a href="#"><i class="fab fa-tiktok"></i></a>
-            </div>
-        <p>&copy; 2025 Nails Jenny. Todos los derechos reservados.</p>
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/nails_jenny15?igsh=MW96cjE5bHp6dTlyOA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>&copy; 2025 Nails Jenny. <span data-i18n="rights_reserved">Todos los derechos reservados.</span></p>
     </footer>
     
     <script>
+        // Traducciones completas
+        const translations = {
+            es: {
+                slogan: "Belleza y cuidado profesional para tus uñas",
+                services_title: "Nuestros Servicios",
+                service1_title: "Manicura Esmaltación en Gel",
+                service1_desc: "Corte, limado, cutículas, hidratación y esmalte en Gel.",
+                service2_title: "Pedicure y esmaltación en gel",
+                service2_desc: "Pedicure con exfoliación, crema y masaje relajante.",
+                service3_title: "Uñas Acrílicas-poligel-fibra de vidrio",
+                service3_desc: "Extensiones con esculpido y diseño a tu elección (sencillos).",
+                service4_title: "Diseño Artístico",
+                service4_desc: "Diseños personalizados con piedras, strass y decoraciones.",
+                service5_title: "Paquete Completo",
+                service5_desc: "Uñas a su elección (diseño, efecto, etc), los pies",
+                book_appointment: "Agendar cita",
+                appointment_title: "Solicita tu Cita",
+                form_name: "Nombre completo",
+                form_phone: "Teléfono",
+                form_email: "Email (opcional)",
+                form_service: "Servicio de interés",
+                select_service: "Selecciona un servicio",
+                service1_option: "Manicura Esmaltación en Gel - R$50",
+                service2_option: "Pedicure y esmaltación en gel - R$50",
+                service3_option: "Uñas Acrílicas-poligel-fibra de vidrio - R$100 - 120",
+                service4_option: "Diseño Artístico - R$10 - 20",
+                service5_option: "Paquete Completo - Desde R$150",
+                other_service: "Otro (especificar en mensaje)",
+                form_date: "Fecha preferida",
+                form_time: "Hora preferida",
+                form_message: "Mensaje adicional (opcional)",
+                form_submit: "Enviar solicitud",
+                contact_title: "Contacto",
+                contact_phone: "Teléfono",
+                call_now: "Llamar ahora",
+                contact_address: "Dirección",
+                full_address: "Servidão manoel Evaristo dos Santos 75 Vargem Grande Florianópolis",
+                view_map: "Ver en mapa",
+                contact_hours: "Horario",
+                week_hours: "Lunes a Domingo: 14:00 - 19:00",
+                rights_reserved: "Todos los derechos reservados."
+            },
+            pt: {
+                slogan: "Beleza e cuidado profissional para suas unhas",
+                services_title: "Nossos Serviços",
+                service1_title: "Manicure de esmalte em gel",
+                service1_desc: "Corte, lixamento, cutículas, hidratação e esmaltação em gel.",
+                service2_title: "Pedicure e esmalte em gel",
+                service2_desc: "Pedicure com esfoliação, creme e massagem relaxante.",
+                service3_title: "Unhas de acrílico, polygel e fibra de vidro",
+                service3_desc: "Extensões com escultura e design à sua escolha (simples).",
+                service4_title: "Design Artístico",
+                service4_desc: "Designs personalizados com pedras, strass e decorações.",
+                service5_title: "Pacote Completo",
+                service5_desc: "Unhas à sua escolha (design, efeito, etc.), unhas dos pés",
+                book_appointment: "Agendar consulta",
+                appointment_title: "Solicite seu Agendamento",
+                form_name: "Nome completo",
+                form_phone: "Telefone",
+                form_email: "Email (opcional)",
+                form_service: "Serviço de interesse",
+                select_service: "Selecione um serviço",
+                service1_option: "Manicure de esmalte em gel - R$50",
+                service2_option: "Pedicure e esmalte em gel - R$50",
+                service3_option: "Unhas de acrílico, polygel e fibra de vidro - R$100 - 120",
+                service4_option: "Design Artístico - A partir de R$10 - 20",
+                service5_option: "Pacote Completo - R$150",
+                other_service: "Outro (especificar na mensagem)",
+                form_date: "Data preferida",
+                form_time: "Hora preferida",
+                form_message: "Mensagem adicional (opcional)",
+                form_submit: "Enviar solicitação",
+                contact_title: "Contato",
+                contact_phone: "Telefone",
+                call_now: "Ligar agora",
+                contact_address: "Endereço",
+                full_address: "Servidão manoel Evaristo dos Santos 75 Vargem Grande Florianópolis",
+                view_map: "Ver no mapa",
+                contact_hours: "Horário",
+                week_hours: "Segunda a Domingo: 14:00 - 19:00",               
+                rights_reserved: "Todos os direitos reservados."
+            }
+        };
+
+        // Función para cambiar idioma
+        function changeLanguage(lang) {
+            // Actualizar botones de idioma
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Aplicar traducciones a elementos con data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' && element.type === 'submit') {
+                        element.value = translations[lang][key];
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        // Event listeners para los botones de idioma
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                changeLanguage(this.dataset.lang);
+            });
+        });
+
+        // Manejo del formulario de WhatsApp
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Obtener los valores del formulario
+            const currentLang = document.querySelector('.language-btn.active').dataset.lang;
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
@@ -444,36 +578,42 @@
             const time = document.getElementById('time').value;
             const message = document.getElementById('message').value;
             
-            // Formatear la fecha para mostrarla mejor
-            const formattedDate = new Date(date).toLocaleDateString('es-MX', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
+            // Formatear la fecha según el idioma
+            const formattedDate = new Date(date).toLocaleDateString(
+                currentLang === 'es' ? 'es-MX' : 'pt-BR', 
+                {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }
+            );
             
-            // Crear mensaje para WhatsApp
-            let whatsappMessage = `¡Hola Nails Jenny! Quiero agendar una cita:\n\n`;
-            whatsappMessage += `*Nombre:* ${name}\n`;
-            whatsappMessage += `*Teléfono:* ${phone}\n`;
-            whatsappMessage += `*Servicio:* ${service}\n`;
-            whatsappMessage += `*Fecha:* ${formattedDate}\n`;
-            whatsappMessage += `*Hora:* ${time}\n`;
+            // Crear mensaje para WhatsApp en el idioma correspondiente
+            let whatsappMessage = currentLang === 'es' 
+                ? `¡Hola Nails Jenny! Quiero agendar una cita:\n\n`
+                : `Olá Nails Jenny! Eu gostaria de marcar um horário:\n\n`;
+                
+            whatsappMessage += `*${currentLang === 'es' ? 'Nombre' : 'Nome'}:* ${name}\n`;
+            whatsappMessage += `*${currentLang === 'es' ? 'Teléfono' : 'Telefone'}:* ${phone}\n`;
+            whatsappMessage += `*${currentLang === 'es' ? 'Servicio' : 'Serviço'}:* ${service}\n`;
+            whatsappMessage += `*${currentLang === 'es' ? 'Fecha' : 'Data'}:* ${formattedDate}\n`;
+            whatsappMessage += `*${currentLang === 'es' ? 'Hora' : 'Hora'}:* ${time}\n`;
             
             if (message) {
-                whatsappMessage += `*Mensaje adicional:* ${message}\n`;
+                whatsappMessage += `*${currentLang === 'es' ? 'Mensaje adicional' : 'Mensagem adicional'}:* ${message}\n`;
             }
             
-            // Codificar el mensaje para URL
             const encodedMessage = encodeURIComponent(whatsappMessage);
-            
-            // Redirigir a WhatsApp
             window.location.href = `https://wa.me/554896796813?text=${encodedMessage}`;
         });
         
         // Establecer la fecha mínima como hoy
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date').min = today;
+        
+        // Inicializar con español
+        changeLanguage('es');
     </script>
 </body>
 </html>
